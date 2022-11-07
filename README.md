@@ -32,7 +32,7 @@ This is a project with many features. Enabling management and creation of Teache
 
 
 
-## 👨🏻‍💻 Admin Area
+## Admin Area
 #### Login Admin
  **User**: admin **Password**: 123456
 ![App Screenshot](https://cdn.discordapp.com/attachments/1038811979856494602/1038812480710918224/Admin_dashboard.png)
@@ -81,7 +81,7 @@ This is a project with many features. Enabling management and creation of Teache
 ![App Screenshot](https://cdn.discordapp.com/attachments/1038811979856494602/1038812482564788244/Edit_messages.png)
 
  
-## 👨🏻‍🎓 Student Area
+## Student Area
 ![App Screenshot](https://cdn.discordapp.com/attachments/1038811979856494602/1038821021685391400/dashboard.png)
 
 #### Features
@@ -103,7 +103,7 @@ This is a project with many features. Enabling management and creation of Teache
 ![App Screenshot](https://cdn.discordapp.com/attachments/1038811979856494602/1038821881257676881/My_messages.png)
 
 
-## 👨🏻‍🏫 Teacher Area 
+## Teacher Area 
 ![App Screenshot](https://cdn.discordapp.com/attachments/1038811979856494602/1038823643540635798/dashboard.png)
 
 #### Features
@@ -129,7 +129,7 @@ This is a project with many features. Enabling management and creation of Teache
 
 #### Send student messages
 ![App Screenshot](https://cdn.discordapp.com/attachments/1038811979856494602/1038823644295610438/Create_messages.png)
-## 🚀 Running Server
+## Running Server
 
 To run server, run the following command
 
@@ -139,7 +139,7 @@ To run server, run the following command
 ```
 
 
-## ⚙️ Tech Stack
+## Tech Stack
 
 **Client:** JavaScript, EJS, Bootstrap
 
