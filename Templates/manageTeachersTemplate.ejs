@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/links') %> <%- include('partials/style') %>
+
+    <title>Manage teachers</title>
+  </head>
+  <body class="fst-italic vh-100">
+    <%- include('partials/navBar', {title:"Manage Teachers"}) %>
+    <main class="p-0 mt-4 mb-4 container d-flex justify-content-center w-75">
+      <table class="table">
+        <thead style="background-color: #9cc4e4" class="text-light">
+          <th>Teacher</th>
+          <th>Birth</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </thead>
+        <tbody style="color: #9cc4e4">
+          <% teachers.forEach((teacher, index)=> { %>
+
+          <tr id="<%=teacher._id  %> ">
+            <td><%= teacher.completeName %></td>
+            <td>
+              <%= teacher.birthDate.month %>/<%= teacher.birthDate.day %>/<%=
+              teacher.birthDate.year %>
+            </td>
+            <td><%= teacher.login.email %></td>
+            <td>
+              <a
+                class="btn p-0"
+                href="/admin/manageTeachers/info/<%=teacher._id  %>/?token=<%=token  %>"
+              >
+                <span class="material-symbols-outlined"> import_contacts </span>
+              </a>
+
+              <button
+                class="btn p-0"
+                onclick="removeTeacher('<%=teacher._id%>')"
+              >
+                <span class="material-symbols-outlined"> delete_forever </span>
+              </button>
+            </td>
+          </tr>
+
+          <% }) %>
+        </tbody>
+      </table>
+    </main>
+    <script>
+      function removeTeacher(id) {
+        fetch("/admin/deleteTeacher/" + id, { method: "DELETE" }).then(
+          (res) => {
+            if (res.status == 200) {
+              res.text().then((teacherID) => {
+                console.log(teacherID);
+
+                let teacher = document.getElementById(teacherID);
+                if (teacher) {
+                  teacher.remove();
+                }
+                location.reload();
+              });
+            } else {
+              res.json().then((err) => {
+                console.log(err.message);
+              });
+            }
+          }
+        );
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

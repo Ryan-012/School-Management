@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include("partials/links") %> <%- include("partials/style") %>
+    <title>Student Info</title>
+  </head>
+  <body>
+    <%- include("partials/navBarStudent", {title:"Student Info"}) %>
+
+    <main
+      class="shadow rounded p-3 mt-2 text-light container-fluid"
+      style="background-color: #9cc4e4; width: 55%"
+    >
+      <div class="text-center"><h1><%=student.completeName %></h1></div>
+
+      <div class="d-flex flex-column fs-6">
+        <p>
+          <strong> Birth:</strong> <%=student.birthDate.month
+          %>/<%=student.birthDate.day %>/<%=student.birthDate.year %>
+        </p>
+
+        <p><strong> Class:</strong> <%=student.class %></p>
+
+        <p><strong> Email:</strong> <%=student.login.email %></p>
+
+        <div>
+          <h3>Responsible:</h3>
+          <p><strong>Name:</strong> <%=student.responsible.completeName %></p>
+          <p>
+            <strong>Telephone:</strong>
+            (<%=student.responsible.telephoneNumber.ddd %>) <%=
+            student.responsible.telephoneNumber.number %>
+          </p>
+          <p><strong>Email:</strong> <%=student.responsible.email %></p>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <a
+          class="btn btn-danger d-flex"
+          href="/student/dashboard/?token=<%=token  %>"
+        >
+          Return
+        </a>
+      </div>
+    </main>
+    <%- include('partials/footer') %>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<nav
+  class="navbar navbar-dark text-light fst-italic"
+  style="background-color: #9cc4e4"
+>
+  <div class="container-fluid d-flex justify-content-between">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#menu"
+      aria-controls="menu"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <h1 class="d-flex align-items-center"><%=title%></h1>
+    <div class="d-flex flex-column align-items-center">
+      <p class="m-0 text-center">Teacher</p>
+      <a href="/" class="btn btn-sm btn-outline-danger">Logout</a>
+    </div>
+  </div>
+</nav>
+<div class="collapse" id="menu" style="background-color: #9cc4e4">
+  <div class="text-center fst-italic p-2 d-flex justify-content-center">
+    <a
+      class="btn btn-light dashboard"
+      style="color: #9cc4e4"
+      href="/teacher/dashboard/?token=<%=token  %>"
+    >
+      Dashboard
+    </a>
+
+    <a
+      class="btn btn-light dashboard"
+      style="color: #9cc4e4"
+      href="/teacher/info/?token=<%=token  %>"
+    >
+      Info
+    </a>
+
+    <div class="dropdown">
+      <a
+        class="btn btn-light dropdown-toggle dashboard"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        style="color: #9cc4e4"
+      >
+        My classes
+      </a>
+
+      <ul class="dropdown-menu">
+        <% classes.forEach(item=> {%>
+
+        <li>
+          <a
+            href="/teacher/class/?token=<%=token  %>&class=<%=item  %>"
+            style="color: #9cc4e4"
+            class="dropdown-item"
+            ><%=item %></a
+          >
+        </li>
+
+        <% }); %>
+      </ul>
+    </div>
+    <a
+      class="btn btn-light dashboard"
+      style="color: #9cc4e4"
+      href="/teacher/myMessages/?token=<%=token  %>"
+    >
+      Messages
+    </a>
+  </div>
+</div>

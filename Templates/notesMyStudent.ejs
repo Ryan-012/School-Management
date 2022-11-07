@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/links') %> <%- include('partials/style') %>
+
+    <title>Note Student</title>
+  </head>
+  <body class="fst-italic">
+    <%- include('partials/navBarTeacher', {title:"Note Student"}) %>
+    <main class="p-0 mt-4 container d-flex justify-content-center w-75">
+      <div
+        class="p-3 shadow rounded text-light"
+        style="background-color: #9cc4e4; transform: translateY(20vh)"
+      >
+        <h4>Discipline: <%=teacher.schoolDiscipline %></h4>
+
+        <h4>Note 1: <%=notes.note1 %></h4>
+        <h4>Note 2: <%=notes.note2 %></h4>
+        <h4>Note 3: <%=notes.note3 %></h4>
+
+        <div class="justify-content-center d-flex mt-2">
+          <a
+            href="/teacher/class/notes/edit/?student=<%=student._id  %>&token=<%=token  %>"
+            class="btn btn-light me-2"
+            style="color: #9cc4e4"
+            >Edit</a
+          >
+
+          <a
+            class="btn btn-danger d-flex"
+            href="/teacher/class/?token=<%=token  %>&class=<%=student.class  %>"
+          >
+            Return
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

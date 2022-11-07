@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/links') %> <%- include('partials/style') %>
+    <title>Student Area</title>
+  </head>
+  <body>
+    <%- include('partials/navBarStudent', {title:"Student Area" }) %>
+
+    <main
+      class="d-flex flex-column justify-content-center align-items-center w-100"
+      style="transform: translateY(25vh); height: 25vh; box-sizing: content-box"
+    >
+      <div
+        class="shadow rounded h-100 w-50"
+        style="background-color: #9cc4e4; max-height: 100%"
+      >
+        <h3 class="m-0 mt-2 text-light text-center">Dashboard</h3>
+        <div
+          class="p-2 d-flex flex-wrap justify-content-center rounded"
+          style="box-sizing: border-box; background-color: #9cc4e4"
+        >
+          <div class="w-25 mb-2 me-2 d-flex flex-column justify-content-center">
+            <a
+              class="btn btn-light d-flex flex-column align-items-center"
+              style="color: #9cc4e4"
+              href="/student/info/?token=<%=token  %>"
+            >
+              <span class="material-symbols-outlined"> contact_mail </span> Info
+            </a>
+          </div>
+          <div class="w-25 mb-2 me-2 d-flex flex-column justify-content-center">
+            <a
+              class="btn btn-light d-flex flex-column text-center align-items-center"
+              style="color: #9cc4e4"
+              href="/student/reportCard/?token=<%=token  %>"
+              ><span class="material-symbols-outlined">groups</span>Report
+              card</a
+            >
+          </div>
+          <div
+            class="w-25 mb-2 me-2 h-100 d-flex flex-column justify-content-center"
+          >
+            <a
+              class="btn btn-light d-flex flex-column align-items-center"
+              style="color: #9cc4e4"
+              href="/student/simulateNotes/?token=<%=token  %>"
+              ><span class="material-symbols-outlined"> person_add </span
+              >Simulate notes
+            </a>
+          </div>
+
+          <div
+            class="w-25 mb-2 h-100 d-flex flex-column justify-content-center"
+          >
+            <a
+              class="btn btn-light d-flex flex-column align-items-center"
+              style="color: #9cc4e4"
+              href="/student/myMessages/?token=<%=token  %>"
+              ><span class="material-symbols-outlined"> chat </span>Messages</a
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <%- include("partials/footer") %>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

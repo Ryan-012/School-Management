@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/links') %> <%- include('partials/style') %>
+
+    <title>Manage Students</title>
+  </head>
+  <body>
+    <%- include('partials/navBar', {title:"Manage Students"}) %>
+    <main class="p-0 mt-4 container d-flex justify-content-center w-75">
+      <table class="table">
+        <thead style="background-color: #9cc4e4" class="text-light">
+          <th>Student</th>
+          <th>Birth</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </thead>
+        <tbody style="color: #9cc4e4">
+          <% students.forEach((student, index)=> { %>
+
+          <tr id="<%=student._id  %> ">
+            <td><%= student.completeName %></td>
+            <td>
+              <%= student.birthDate.month %>/<%= student.birthDate.day %>/<%=
+              student.birthDate.year %>
+            </td>
+            <td><%= student.login.email %></td>
+            <td>
+              <a
+                class="btn p-0"
+                href="/admin/manageStudents/info/<%=student._id  %>/?token=<%=token  %>"
+              >
+                <span class="material-symbols-outlined"> import_contacts </span>
+              </a>
+              <a
+                href="/admin/manageStudents/studentNotes/<%=student._id  %>/?token=<%=token  %>"
+                class="btn p-0"
+              >
+                <span class="material-symbols-outlined"> view_list </span>
+              </a>
+
+              <button
+                class="btn p-0"
+                onclick="removeStudent('<%=student._id%>')"
+              >
+                <span class="material-symbols-outlined"> delete_forever </span>
+              </button>
+            </td>
+          </tr>
+
+          <% }) %>
+        </tbody>
+      </table>
+    </main>
+
+    <script>
+      function removeStudent(id) {
+        fetch("/admin/deleteStudent/" + id, { method: "DELETE" }).then(
+          (res) => {
+            if (res.status == 200) {
+              res.text().then((studentID) => {
+                console.log(studentID);
+
+                let student = document.getElementById(studentID);
+                if (student) {
+                  teacher.remove();
+                }
+                location.reload();
+              });
+            } else {
+              res.json().then((err) => {
+                console.log(err.message);
+              });
+            }
+          }
+        );
+      }
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

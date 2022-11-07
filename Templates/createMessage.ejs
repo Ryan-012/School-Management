@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/links') %><%- include('partials/style') %>
+    <title>Create Message</title>
+  </head>
+  <body class="vh-100 fst-italic">
+    <%- include('partials/navBar',{title:"Create Message"}) %>
+
+    <main
+      class="container p-3 shadow rounded w-50"
+      style="background-color: #9cc4e4; transform: translateY(15vh)"
+    >
+      <form
+        class="form text-light"
+        action="/admin/myMessages/create/<%=name %>"
+        method="post"
+        autocomplete="off"
+      >
+        <div>
+          <h3>Create By:</h3>
+          <input
+            type="text"
+            name="createBy"
+            onchange="this.value = this.value.trim()"
+            class="form-control"
+            value="<%=name  %>"
+            required
+          />
+        </div>
+        <div>
+          <h3>Message:</h3>
+          <input
+            type="text"
+            name="message"
+            onchange="this.value = this.value.trim()"
+            class="form-control"
+            required
+          />
+        </div>
+        <div>
+          <h3>Message To:</h3>
+          <select class="form-select" id="select" name="messageTo" required>
+            <option selected disabled value="">choose...</option>
+            <option disabled value="Teachers">Teachers</option>
+            <% teacher.forEach(person=>{ %>
+            <option
+              value="<%=person.completeName%> | <%=person.schoolDiscipline%>"
+            >
+              <%=person.completeName%> | <%=person.schoolDiscipline%>
+            </option>
+
+            <% }) %>
+            <option disabled value="Students">Students</option>
+            <% student.forEach(person=>{ %>
+            <option value="<%=person.completeName%> | <%=person.class%>">
+              <%=person.completeName%> | <%=person.class%>
+            </option>
+
+            <% }) %>
+          </select>
+        </div>
+        <div class="justify-content-center d-flex mt-2">
+          <button
+            type="submit"
+            class="me-2 btn btn-light d-flex"
+            style="color: #9cc4e4"
+          >
+            Create
+          </button>
+          <a
+            class="btn btn-danger d-flex"
+            href="/admin/myMessages/<%=name  %>/?token=<%=token  %>"
+          >
+            Return
+          </a>
+        </div>
+      </form>
+    </main>
+    <%- include('partials/footer') %>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

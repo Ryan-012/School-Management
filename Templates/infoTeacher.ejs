@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/links') %><%- include('partials/style') %>
+    <title>Teacher Info</title>
+  </head>
+  <body class="vh-100 fst-italic">
+    <%- include('partials/navBar', {title:"Teacher Info"}) %>
+
+    <main
+      class="shadow rounded w-50 p-3 mt-5 text-light container-fluid"
+      style="background-color: #9cc4e4"
+    >
+      <div class="text-center"><h1><%=teacher.completeName %></h1></div>
+      <div class="d-flex flex-column fs-6">
+        <p>
+          <strong> Birth:</strong> <%=teacher.birthDate.month
+          %>/<%=teacher.birthDate.day %>/<%=teacher.birthDate.year %>
+        </p>
+        <p><strong> Discipline:</strong> <%=teacher.schoolDiscipline %></p>
+        <p><strong> Classes:</strong> <%=teacher.classes %></p>
+      </div>
+      <div>
+        <p><strong> Email:</strong> <%=teacher.login.email %></p>
+      </div>
+      <div class="d-flex justify-content-center">
+        <a
+          href="/admin/manageTeachers/edit/<%=teacher._id  %>/?token=<%=token  %>"
+          class="btn btn-light me-2"
+          style="color: #9cc4e4"
+          >Edit</a
+        >
+        <a
+          class="btn btn-danger d-flex"
+          href="/admin/manageTeachers/?token=<%=token  %>"
+        >
+          Return
+        </a>
+      </div>
+    </main>
+
+    <%- include('partials/footer') %>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+<nav
+  class="navbar navbar-dark text-light fst-italic"
+  style="background-color: #9cc4e4"
+>
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#menu"
+      aria-controls="menu"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <h1><%=title%></h1>
+    <div>
+      <p class="m-0 text-center">Admin</p>
+      <a href="/" class="btn btn-sm btn-outline-danger">Logout</a>
+    </div>
+  </div>
+</nav>
+<div class="collapse" id="menu" style="background-color: #9cc4e4">
+  <div class="text-center fst-italic p-2 d-flex justify-content-center">
+    <a
+      class="btn btn-light dashboard"
+      style="color: #9cc4e4"
+      href="/admin/login/?user=admin&password=123456"
+    >
+      Dashboard
+    </a>
+    <div class="dropdown">
+      <a
+        class="btn btn-light dropdown-toggle dashboard"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        style="color: #9cc4e4"
+      >
+        Create
+      </a>
+
+      <ul class="dropdown-menu">
+        <li>
+          <a
+            class="dropdown-item"
+            href="/admin/createStudent/?token=<%=token  %>"
+            style="color: #9cc4e4"
+            >Students</a
+          >
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            href="/admin/createTeacher/?token=<%=token  %>"
+            style="color: #9cc4e4"
+            >Teachers</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="dropdown">
+      <a
+        class="btn btn-light dropdown-toggle dashboard"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+        style="color: #9cc4e4"
+      >
+        Manage
+      </a>
+
+      <ul class="dropdown-menu">
+        <li>
+          <a
+            class="dropdown-item"
+            href="/admin/manageStudents/?token=<%=token  %>"
+            style="color: #9cc4e4"
+            >Students</a
+          >
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            href="/admin/manageTeachers/?token=<%=token  %>"
+            style="color: #9cc4e4"
+            >Teachers</a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <a
+      href="http://localhost:3000/admin/myMessages/Admin/?token=<%=token  %>"
+      class="btn btn-light dashboard"
+      style="color: #9cc4e4"
+      >Messages</a
+    >
+  </div>
+</div>

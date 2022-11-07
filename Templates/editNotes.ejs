@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/links') %> <%- include('partials/style') %>
+
+    <title>Edit Notes</title>
+  </head>
+  <body class="vh-100 fst-italic">
+    <%- include('partials/navBar', {title: "Edit Notes"}) %>
+    <main
+      class="p-5 mt-4 container text-center w-75 row text-light shadow rounded"
+      style="background-color: #9cc4e4; transform: translateX(25vh)"
+    >
+      <form
+        action="/admin/manageStudents/studentNotes/edit/<%=student._id%>"
+        method="post"
+        autocomplete="off"
+      >
+        <div class="col fs-4 mb-2">
+          <div class="row">Name: <%=student.completeName %></div>
+          <div class="row">Class: <%=student.class %></div>
+        </div>
+        <div class="row border border-light">
+          <div class="col">Discipline</div>
+          <div class="col">1º Tri</div>
+          <div class="col">2º Tri</div>
+          <div class="col">3º Tri</div>
+        </div>
+        <div class="row border border-light border-top-0">
+          <div class="col" style="color: #9cc4e4">Discipline</div>
+          <div class="col">Notes</div>
+          <div class="col">Notes</div>
+          <div class="col">Notes</div>
+        </div>
+        <div class="row border border-light border-top-0" id="calc">
+          <div class="col">Portuguese</div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.portuguese.note1"
+              value="<%= student.notes.portuguese.note1  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.portuguese.note2"
+              value="<%= student.notes.portuguese.note2  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.portuguese.note3"
+              value="<%= student.notes.portuguese.note3  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+        </div>
+        <div class="row border border-light border-top-0" id="calc">
+          <div class="col">Math</div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.math.note1"
+              value="<%= student.notes.math.note1  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.math.note2"
+              value="<%= student.notes.math.note2  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.math.note3"
+              value="<%= student.notes.math.note3  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+        </div>
+        <div class="row border border-light border-top-0" id="calc">
+          <div class="col">History</div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.history.note1"
+              value="<%= student.notes.history.note1  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.history.note2"
+              value="<%= student.notes.history.note2  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.history.note3"
+              value="<%= student.notes.history.note3  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+        </div>
+        <div class="row border border-light border-top-0" id="calc">
+          <div class="col">Biology</div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.biology.note1"
+              value="<%= student.notes.biology.note1  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.biology.note2"
+              value="<%= student.notes.biology.note2  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.biology.note3"
+              value="<%= student.notes.biology.note3  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+        </div>
+        <div class="row border border-light border-top-0" id="calc">
+          <div class="col">Chemistry</div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.chemistry.note1"
+              value="<%= student.notes.chemistry.note1  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.chemistry.note2"
+              value="<%= student.notes.chemistry.note2  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.chemistry.note3"
+              value="<%= student.notes.chemistry.note3  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+        </div>
+        <div class="row border border-light border-top-0" id="calc">
+          <div class="col">Physics</div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.physics.note1"
+              value="<%= student.notes.physics.note1  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.physics.note2"
+              value="<%= student.notes.physics.note2  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.physics.note3"
+              value="<%= student.notes.physics.note3  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+        </div>
+        <div class="row border border-light border-top-0" id="calc">
+          <div class="col">English</div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.english.note1"
+              value="<%= student.notes.english.note1  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.english.note2"
+              value="<%= student.notes.english.note2  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              name="notes.english.note3"
+              value="<%= student.notes.english.note3  %>"
+              class="w-25 h-75 form-control d-flex text-center"
+              style="transform: translate(150%, 15%)"
+              onchange="this.value = this.value.replace(/,/g, '.')"
+              required
+            />
+          </div>
+        </div>
+        <div class="justify-content-center d-flex mt-2">
+          <button
+            type="submit"
+            class="btn btn-light me-2"
+            style="color: #9cc4e4"
+          >
+            Save
+          </button>
+          <a
+            class="btn btn-danger d-flex"
+            href="/admin/manageStudents/studentNotes/<%=student._id %>/?token=<%=token  %>"
+          >
+            Return
+          </a>
+        </div>
+      </form>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

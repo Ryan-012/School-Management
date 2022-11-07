@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%- include('partials/links') %> <%- include('partials/style') %>
+    <title>Login Teacher</title>
+  </head>
+  <body class="fst-italic">
+    <%- include ("partials/initialPartial") %>
+    <main
+      class="justify-content-center align-items-center d-flex flex-column w-100 justify-content-center"
+      style="transform: translateY(25vh)"
+    >
+      <form
+        class="text-light shadow rounded p-3"
+        style="background-color: #9cc4e4"
+        action="/teacher/login/"
+        autocomplete="off"
+      >
+        <h4
+          class="text-center d-flex justify-content-center align-items-center"
+        >
+          Teacher
+        </h4>
+        <input
+          type="email"
+          placeholder="email"
+          name="login.email"
+          class="form-control mb-2"
+          required
+          onchange="this.value = this.value.trim()"
+        />
+        <input
+          type="password"
+          placeholder="password"
+          name="login.password"
+          onchange="this.value = this.value.trim()"
+          required
+          class="form-control mb-2"
+        />
+
+        <div class="d-flex justify-content-center">
+          <button
+            type="submit"
+            class="me-2 btn btn-light"
+            style="color: #9cc4e4"
+          >
+            Sign in
+          </button>
+          <a href="/employee" class="btn btn-danger">Return</a>
+        </div>
+      </form>
+      <% if(error){ %>
+
+      <h5 class="d-flex text-danger">*Email or password incorrect</h5>
+
+      <% } %>
+    </main>
+  </body>
+</html>

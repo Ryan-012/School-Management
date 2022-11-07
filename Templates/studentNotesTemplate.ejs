@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Notes</title>
+    <%- include('partials/links') %><%- include('partials/style') %>
+    <style>
+      .color {
+        color: #9cc4e4;
+      }
+    </style>
+  </head>
+  <body class="vh-100 fst-italic">
+    <%- include('partials/navBar', {title: "Student Notes"}) %>
+    <main
+      class="p-5 mt-4 container text-center w-75 row text-light shadow rounded"
+      style="background-color: #9cc4e4; transform: translateX(25vh)"
+    >
+      <div class="col fs-4 mb-2">
+        <div class="row">Name: <%=student.completeName %></div>
+        <div class="row">Class: <%=student.class %></div>
+      </div>
+      <div class="row border border-light">
+        <div class="col">Discipline</div>
+        <div class="col">1º Tri</div>
+        <div class="col">2º Tri</div>
+        <div class="col">3º Tri</div>
+        <div class="col">Means</div>
+        <div class="col">Stuatus</div>
+      </div>
+      <div class="row border border-light border-top-0">
+        <div class="col color">Discipline</div>
+        <div class="col">Notes</div>
+        <div class="col">Notes</div>
+        <div class="col">Notes</div>
+        <div class="col color">Means</div>
+        <div class="col color">Stuatus</div>
+      </div>
+      <div class="row border border-light border-top-0" id="calc">
+        <div class="col">Portuguese</div>
+        <div class="col"><%=student.notes.portuguese.note1%></div>
+        <div class="col"><%=student.notes.portuguese.note2%></div>
+        <div class="col"><%=student.notes.portuguese.note3%></div>
+        <div class="col means">Means</div>
+        <div class="col">Stuatus</div>
+      </div>
+      <div class="row border border-light border-top-0" id="calc">
+        <div class="col">Math</div>
+        <div class="col"><%=student.notes.math.note1%></div>
+        <div class="col"><%=student.notes.math.note2%></div>
+        <div class="col"><%=student.notes.math.note3%></div>
+        <div class="col means">Means</div>
+        <div class="col">Stuatus</div>
+      </div>
+      <div class="row border border-light border-top-0" id="calc">
+        <div class="col">History</div>
+        <div class="col"><%=student.notes.history.note1%></div>
+        <div class="col"><%=student.notes.history.note2%></div>
+        <div class="col"><%=student.notes.history.note3%></div>
+        <div class="col means">Means</div>
+        <div class="col">Stuatus</div>
+      </div>
+      <div class="row border border-light border-top-0" id="calc">
+        <div class="col">Biology</div>
+        <div class="col"><%=student.notes.biology.note1%></div>
+        <div class="col"><%=student.notes.biology.note2%></div>
+        <div class="col"><%=student.notes.biology.note3%></div>
+        <div class="col means">Means</div>
+        <div class="col">Stuatus</div>
+      </div>
+      <div class="row border border-light border-top-0" id="calc">
+        <div class="col">Chemistry</div>
+        <div class="col"><%=student.notes.chemistry.note1%></div>
+        <div class="col"><%=student.notes.chemistry.note2%></div>
+        <div class="col"><%=student.notes.chemistry.note3%></div>
+        <div class="col means">Means</div>
+        <div class="col">Stuatus</div>
+      </div>
+      <div class="row border border-light border-top-0" id="calc">
+        <div class="col">Physics</div>
+        <div class="col"><%=student.notes.physics.note1%></div>
+        <div class="col"><%=student.notes.physics.note2%></div>
+        <div class="col"><%=student.notes.physics.note3%></div>
+        <div class="col means">Means</div>
+        <div class="col">Stuatus</div>
+      </div>
+      <div class="row border border-light border-top-0" id="calc">
+        <div class="col">English</div>
+        <div class="col"><%=student.notes.english.note1%></div>
+        <div class="col"><%=student.notes.english.note2%></div>
+        <div class="col"><%=student.notes.english.note3%></div>
+        <div class="col means">Means</div>
+        <div class="col">Stuatus</div>
+      </div>
+      <div class="justify-content-center d-flex mt-2">
+        <a
+          href="/admin/manageStudents/studentNotes/edit/<%=student._id%>/?token=<%=token  %>"
+          class="btn btn-light me-2"
+          style="color: #9cc4e4"
+          >Edit</a
+        >
+        <a
+          class="btn btn-danger d-flex"
+          href="/admin/manageStudents/?token=<%=token  %>"
+        >
+          Return
+        </a>
+      </div>
+    </main>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        let calc = document.querySelectorAll("#calc");
+
+        calc.forEach((items) => {
+          let note1 = items.children[1];
+          let note2 = items.children[2];
+          let note3 = items.children[3];
+          let status = items.children[5];
+          let means = items.children[4];
+
+          let calc =
+            (Number(note1.innerText) +
+              Number(note2.innerText) +
+              Number(note3.innerText)) /
+            3;
+          let roundedNumber = calc.toFixed(1);
+          means.innerText = roundedNumber;
+
+          if (means.innerText == "0.0") {
+            means.innerText = "0";
+          }
+          if (roundedNumber >= 6) {
+            status.innerText = "Aprovado";
+            status.classList.add("text-success");
+            means.classList.add("text-success");
+            note1.classList.add("text-success");
+            note2.classList.add("text-success");
+            note3.classList.add("text-success");
+          }
+          if (roundedNumber < 6) {
+            status.innerText = "Recuperação";
+            status.classList.add("text-warning");
+            means.classList.add("text-warning");
+            note1.classList.add("text-warning");
+            note2.classList.add("text-warning");
+            note3.classList.add("text-warning");
+          }
+          if (roundedNumber < 4) {
+            status.innerText = "Reprovado";
+            status.classList.add("text-danger");
+            means.classList.add("text-danger");
+            note1.classList.add("text-danger");
+            note2.classList.add("text-danger");
+            note3.classList.add("text-danger");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
