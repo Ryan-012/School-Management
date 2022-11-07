@@ -24,7 +24,7 @@ This is a project with many features. Enabling management and creation of Teache
   - [Teacher messages](#teacher-messages)
 - [Running Server](#running-server)
 - [Tech Stack](#tech-stack)
-## 🫶 Home Pages
+## Home Pages
 
 ![App Screenshot](https://cdn.discordapp.com/attachments/1038811979856494602/1038812484032807023/home_page1.png)
 
